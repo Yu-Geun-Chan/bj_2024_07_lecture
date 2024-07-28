@@ -1,6 +1,5 @@
 package org.koreait;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -8,16 +7,24 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int c = sc.nextInt();
-        int d = sc.nextInt();
-        int[] nums = new int[4];
-        nums[0] = a - 0;
-        nums[1] = b - 0;
-        nums[2] = c - a;
-        nums[3] = d - b;
-        Arrays.sort(nums);
-        System.out.println(nums[0]);
+        String a = sc.nextLine();
+        String b = sc.nextLine();
+        String c = sc.nextLine();
+        String num = a + " " + b + " " + c;
+        String[] nums = num.split(" ");
+        int[] numsArray = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            numsArray[i] = Integer.parseInt(nums[i]);
+        }
+        if (numsArray[0] != numsArray[2] && numsArray[0] == numsArray[4]) {
+            System.out.printf(numsArray[2] + " ");
+        } else if (numsArray[0] != numsArray[4] && numsArray[0] == numsArray[2]) {
+            System.out.printf(numsArray[4] + " ");
+        } else System.out.printf(numsArray[0] + " ");
+        if (numsArray[1] != numsArray[3] && numsArray[1] == numsArray[5]) {
+            System.out.printf(numsArray[3] + " ");
+        } else if (numsArray[1] != numsArray[5] && numsArray[1] == numsArray[3]) {
+            System.out.printf(numsArray[5] + " ");
+        } else System.out.printf(numsArray[1] + " ");
     }
 }
