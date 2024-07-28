@@ -1,5 +1,6 @@
 package org.koreait;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +10,14 @@ public class Main {
 
         int a = sc.nextInt();
         int b = sc.nextInt();
-
-        System.out.println(a * b);
+        int c = sc.nextInt();
+        int d = sc.nextInt();
+        int[] nums = new int[4];
+        nums[0] = a - 0;
+        nums[1] = b - 0;
+        nums[2] = c - a;
+        nums[3] = d - b;
+        Arrays.sort(nums);
+        System.out.println(nums[0]);
     }
 }
