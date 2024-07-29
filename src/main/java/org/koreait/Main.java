@@ -14,12 +14,12 @@ public class Main {
             point += cmd + " ";
         }
         point = point.trim();
-
-        int[] pointRow = new int[point.split(" ").length / 2];
-        int[] pointColumn = new int[point.split(" ").length / 2];
-        for (int i = 0; i < point.split(" ").length / 2; i++) {
-            pointRow[i] = Integer.parseInt(point.split(" ")[i * 2]);
-            pointColumn[i] = Integer.parseInt(point.split(" ")[1 + i * 2]);
+        String[] points = point.split(" ");
+        int[] pointRow = new int[points.length / 2];
+        int[] pointColumn = new int[points.length / 2];
+        for (int i = 0; i < points.length / 2; i++) {
+            pointRow[i] = Integer.parseInt(points[i * 2]);
+            pointColumn[i] = Integer.parseInt(points[1 + i * 2]);
         }
         Arrays.sort(pointRow);
         Arrays.sort(pointColumn);
