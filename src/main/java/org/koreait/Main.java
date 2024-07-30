@@ -1,29 +1,39 @@
 package org.koreait;
 
-
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String cmd = sc.nextLine();
+        while (true) {
+            String num = br.readLine();
+            if (num == null) {
+                break;
+            }
+            String[] numBits = num.split(" ");
+            int a = Integer.parseInt(numBits[0]);
+            int b = Integer.parseInt(numBits[1]);
 
-        String[] abcBits = cmd.split(" ");
+            if (a == b) {
+                break;
+            }
 
-        int[] abc = new int[3];
-
-        for (int i = 0; i < abcBits.length; i++) {
-            abc[i] = Integer.parseInt(abcBits[i]);
+            if (a > b) {
+                if (a % b == 0) {
+                    System.out.println("multiple");
+                }
+            } else if (b > a) {
+                if (b % a == 0) {
+                    System.out.println("factor");
+                }
+            } else {
+                System.out.println("neither");
+            }
         }
-        Arrays.sort(abc);
-
-        if (abc[0] == abc[1] && abc[1] == abc[2]) {
-            System.out.println(abc[0] + abc[1] + abc[2]);
-        } else System.out.println(abc[0] + abc[1] - 1 + abc[0] + abc[1]);
-
-        sc.close();
+        br.close();
     }
 }
