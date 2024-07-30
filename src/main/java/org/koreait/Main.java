@@ -1,42 +1,25 @@
 package org.koreait;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        while (true) {
-            String num = br.readLine();
-            if (num == null) {
-                break;
-            }
-            String[] numBits = num.split(" ");
-            int a = Integer.parseInt(numBits[0]);
-            int b = Integer.parseInt(numBits[1]);
-
-            if (a == b) {
-                break;
-            }
-
-            if (a > b) {
-                if (a % b == 0) {
-                    System.out.println("multiple");
-                }
-                else {
-                    System.out.println("neither");
-                }
-            } else if (b > a) {
-                if (b % a == 0) {
-                    System.out.println("factor");
-                } else {
-                    System.out.println("neither");
-                }
+        int n1 = sc.nextInt();
+        int n2 = sc.nextInt();
+        List<Integer> numList = new ArrayList<Integer>();
+        for (int i = 1; i <= n1; i++) {
+            if (n1 % i == 0) {
+                numList.add(i);
             }
         }
-        br.close();
+
+        try {
+            System.out.println(numList.get(n2 - 1));
+        } catch (Exception e) {
+            System.out.println(0);
+        }
     }
 }
