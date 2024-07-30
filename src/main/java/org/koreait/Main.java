@@ -1,42 +1,29 @@
 package org.koreait;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner sc = new Scanner(System.in);
 
-        int[] lines = new int[3];
+        String cmd = sc.nextLine();
 
-        while (true) {
+        String[] abcBits = cmd.split(" ");
 
-        String line = br.readLine();
-        if (line == null) {
-            break;
+        int[] abc = new int[3];
+
+        for (int i = 0; i < abcBits.length; i++) {
+            abc[i] = Integer.parseInt(abcBits[i]);
         }
+        Arrays.sort(abc);
 
-        String[] inputs = line.split(" ");
-        lines[0] = Integer.parseInt(inputs[0]);
-        lines[1] = Integer.parseInt(inputs[1]);
-        lines[2] = Integer.parseInt(inputs[2]);
-        Arrays.sort(lines);
+        if (abc[0] == abc[1] && abc[1] == abc[2]) {
+            System.out.println(abc[0] + abc[1] + abc[2]);
+        } else System.out.println(abc[0] + abc[1] - 1 + abc[0] + abc[1]);
 
-        if (lines[0] == 0 && lines[1] == 0 && lines[2] == 0) {
-            break;
-        }
-        if (lines[2] >= lines[0] + lines[1]) {
-            System.out.println("Invalid");
-        } else if (lines[0] == lines[1] && lines[1] == lines[2]) {
-            System.out.println("Equilateral ");
-        } else if (lines[0] != lines[1] && lines[1] != lines[2]) {
-            System.out.println("Scalene");
-        } else System.out.println("Isosceles");
-
-        }
-        br.close();
+        sc.close();
     }
 }
