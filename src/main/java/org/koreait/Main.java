@@ -26,12 +26,15 @@ public class Main {
                 if (a % b == 0) {
                     System.out.println("multiple");
                 }
+                else {
+                    System.out.println("neither");
+                }
             } else if (b > a) {
                 if (b % a == 0) {
                     System.out.println("factor");
+                } else {
+                    System.out.println("neither");
                 }
-            } else {
-                System.out.println("neither");
             }
         }
         br.close();
