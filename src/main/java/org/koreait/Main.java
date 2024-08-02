@@ -8,21 +8,17 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int count = 0;
-        boolean isPrimeNumber;
+        int num = sc.nextInt();
+        int k = 2;
 
-        for (int i = 0; i < n; i++) {
-            int a = sc.nextInt();
-            for (int j = 2; j < a; j++) {
-                if (a % j == 0) {
-                    isPrimeNumber = false;
-                }
+        while (num != 1) {
+            if (num % k == 0) {
+                System.out.println(k + " ");
+                num /= k;
+            } else {
+                k++;
             }
         }
-        System.out.println(count);
     }
 }
-
-
 
