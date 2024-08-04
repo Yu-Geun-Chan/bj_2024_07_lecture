@@ -36,6 +36,7 @@ public class Main {
                 sum += i;
             }
         }
+        // 소수가 없다면 -1을 출력
         if (sum == -1) {
             System.out.println(sum);
         } else {
