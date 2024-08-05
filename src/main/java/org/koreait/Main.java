@@ -1,8 +1,7 @@
 package org.koreait;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -10,39 +9,24 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        int min = sc.nextInt();
-        int max = sc.nextInt();
-        int sum = -1;
-        List<Integer> arr = new ArrayList<Integer>();
-
-
-        for (int i = min; i <= max; i++) {
-            // 소수인지 판별할 논리형 타입 check 변수 선언
-            boolean check = true;
-            // i가 1이라면 소수가 아니므로 check에 false 저장
-            if (i == 1) {
-                check = false;
-            }
-            // i가 j로 나눠지면 소수가 아니므로 check에 false 저장
-            for (int j = 2; j <= i; j++) {
-                if (j != i && i % j == 0) {
-                    check = false;
-                    break;
-                }
-            }
-            // check가 true라면 소수이므로
-            if (check) {
-                arr.add(i);
-                sum += i;
-            }
+        int n = sc.nextInt();
+        String xy = "";
+        int[] x = new int[n];
+        int[] y = new int[n];
+        for (int i = 0; i <= n; i++) {
+            String cmd = sc.nextLine();
+            xy += cmd + " ";
         }
-        // 소수가 없다면 -1을 출력
-        if (sum == -1) {
-            System.out.println(sum);
-        } else {
-            System.out.println(sum + 1);
-            System.out.println(arr.get(0));
+        xy = xy.trim();
+
+        String[] x_yBits = xy.split(" ");
+        for (int i = 0; i < x_yBits.length / 2; i++) {
+            x[i] = Integer.parseInt(x_yBits[i * 2]);
+            y[i] = Integer.parseInt(x_yBits[i * 2 + 1]);
         }
+        Arrays.sort(x);
+        Arrays.sort(y);
+        System.out.println((x[x.length - 1] - x[0]) * (y[y.length - 1] - y[0]));
     }
 }
 
