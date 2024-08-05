@@ -1,34 +1,50 @@
 package org.koreait;
 
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
 
-        int n = sc.nextInt();
-        String xy = "";
-        int[] x = new int[n];
-        int[] y = new int[n];
-        for (int i = 0; i <= n; i++) {
-            String cmd = sc.nextLine();
-            xy += cmd + " ";
+        int xMax = 0;
+        int xMin = 0;
+
+        int yMax = 0;
+        int yMin = 0;
+
+        for (int i = 0; i < n; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+
+
+            if (i == 0) {
+                xMin = x;
+                yMin = y;
+                xMax = x;
+                yMax = y;
+            }
+            if (x > xMax)
+                xMax = x;
+            if (x < xMin)
+                xMin = x;
+            if (y > yMax)
+                yMax = y;
+            if (y < yMin)
+                yMin = y;
         }
-        xy = xy.trim();
-
-        String[] x_yBits = xy.split(" ");
-        for (int i = 0; i < x_yBits.length / 2; i++) {
-            x[i] = Integer.parseInt(x_yBits[i * 2]);
-            y[i] = Integer.parseInt(x_yBits[i * 2 + 1]);
-        }
-        Arrays.sort(x);
-        Arrays.sort(y);
-        System.out.println((x[x.length - 1] - x[0]) * (y[y.length - 1] - y[0]));
+        if (n == 1) {
+            System.out.println(0);
+        } else System.out.println((xMax - xMin) * (yMax - yMin));
     }
 }
+
 
 
 
