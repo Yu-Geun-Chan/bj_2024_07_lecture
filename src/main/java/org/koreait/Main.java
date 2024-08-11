@@ -69,36 +69,51 @@ public class Main {
                 countZ++;
             }
         }
-        Map<Character,Integer> alpabetMap = new HashMap<>();
-        alpabetMap.put('A', countA);
-        alpabetMap.put('B', countB);
-        alpabetMap.put('C', countC);
-        alpabetMap.put('D', countD);
-        alpabetMap.put('E', countE);
-        alpabetMap.put('F', countF);
-        alpabetMap.put('G', countG);
-        alpabetMap.put('H', countH);
-        alpabetMap.put('I', countI);
-        alpabetMap.put('J', countJ);
-        alpabetMap.put('K', countK);
-        alpabetMap.put('L', countL);
-        alpabetMap.put('M', countM);
-        alpabetMap.put('N', countN);
-        alpabetMap.put('O', countO);
-        alpabetMap.put('P', countP);
-        alpabetMap.put('Q', countQ);
-        alpabetMap.put('R', countR);
-        alpabetMap.put('S', countS);
-        alpabetMap.put('T', countT);
-        alpabetMap.put('U', countU);
-        alpabetMap.put('V', countV);
-        alpabetMap.put('W', countW);
-        alpabetMap.put('X', countX);
-        alpabetMap.put('Y', countY);
-        alpabetMap.put('Z', countZ);
+        Map<String, Integer> alpabetMap = new HashMap<>();
+        alpabetMap.put("A", countA);
+        alpabetMap.put("B", countB);
+        alpabetMap.put("C", countC);
+        alpabetMap.put("D", countD);
+        alpabetMap.put("E", countE);
+        alpabetMap.put("F", countF);
+        alpabetMap.put("G", countG);
+        alpabetMap.put("H", countH);
+        alpabetMap.put("I", countI);
+        alpabetMap.put("J", countJ);
+        alpabetMap.put("K", countK);
+        alpabetMap.put("L", countL);
+        alpabetMap.put("M", countM);
+        alpabetMap.put("N", countN);
+        alpabetMap.put("O", countO);
+        alpabetMap.put("P", countP);
+        alpabetMap.put("Q", countQ);
+        alpabetMap.put("R", countR);
+        alpabetMap.put("S", countS);
+        alpabetMap.put("T", countT);
+        alpabetMap.put("U", countU);
+        alpabetMap.put("V", countV);
+        alpabetMap.put("W", countW);
+        alpabetMap.put("X", countX);
+        alpabetMap.put("Y", countY);
+        alpabetMap.put("Z", countZ);
 
-        Integer maxValue = Collections.max(alpabetMap.values());
-        System.out.println(maxValue);
+        List<String> keySet = new ArrayList<>(alpabetMap.keySet());
+
+        keySet.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return alpabetMap.get(o2).compareTo(alpabetMap.get(o1));
+            }
+        });
+
+        List<Integer> values = new ArrayList<>(keySet.size());
+
+        for (String key : keySet) {
+            values.add(alpabetMap.get(key));
+        }
+        if (Objects.equals(alpabetMap.get(0), alpabetMap.get(1))) {
+            System.out.println("?");
+        } else System.out.println(keySet.get(0));
 
     }
 }
