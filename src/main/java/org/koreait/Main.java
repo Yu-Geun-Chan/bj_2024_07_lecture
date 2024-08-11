@@ -111,7 +111,7 @@ public class Main {
         for (String key : keySet) {
             values.add(alpabetMap.get(key));
         }
-        if (Objects.equals(alpabetMap.get(0), alpabetMap.get(1))) {
+        if (Objects.equals(values.get(0), values.get(1))) {
             System.out.println("?");
         } else System.out.println(keySet.get(0));
 
